@@ -1,0 +1,4 @@
+{
+  "*.{ts,tsx}": "./node_modules/.bin/eslint --fix",
+  "package.json": "node ./tools/scripts/lint-package-json.js"
+}

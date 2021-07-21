@@ -1,0 +1,146 @@
+{
+  // There are some rules from 3rd party config we don't like
+  // or want to change parameters.
+  // We override them in this config
+  "rules": {
+    // Require explicit return types on functions and class methods
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-function-return-type.md
+    // * Rule is disable because of heavily used callbacks for 3rd party libs
+    // * where return type is 3-level 15-parameters generic type from the lib.
+    // * It is tons of efforts to figure out the type,
+    // * but inferred return type works too.
+    "@typescript-eslint/explicit-function-return-type": "off",
+
+    // Using the any type defeats the purpose of using TypeScript.
+    // When any is used, all compiler type checks around that value are ignored.
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-explicit-any.md
+    // * It is here to set options
+    "@typescript-eslint/no-explicit-any": [
+      "warn",
+      {
+        "fixToUnknown": true,
+        "ignoreRestArgs": true
+      }
+    ],
+
+    // Disallows non-null assertions using the ! postfix operator
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-non-null-assertion.md
+    // * Rule is disable because there are some often cases when TS does not understand
+    // * that value is guaranteed, like Map#get after Map#has
+    // * or Array#pop and Array#unshift after checking array is not empty.
+    "@typescript-eslint/no-non-null-assertion": "off",
+
+    // Disallow the use of variables before they are defined
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-use-before-define.md
+    // * It is here to allow usage for hoisted declaration
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      {
+        "functions": false, // Function declarations are hoisted, so it's safe
+        "typedefs": false // Type declarations are hoisted, so it's safe
+      }
+    ],
+
+    // Ensure consistent use of file extension within the import path
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md
+    // * It is here to forbid .ts and .tsx extensions
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+
+    // Forbid the use of extraneous packages
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
+    // * It is here to allow devDependencies in specific places
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": ["**/*.spec.ts*", "tools/**"] }
+    ],
+
+    // Enforce a convention in module import order
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/order.md
+    // * It is here because we need strict ordering for imports with aliases
+    "import/order": [
+      "error",
+      {
+        "alphabetize": { "order": "asc", "caseInsensitive": true },
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ]
+      }
+    ],
+
+    // Require modules with a single export to use a default export
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/prefer-default-export.md
+    // * Rule is disable because we like named exports
+    "import/prefer-default-export": "off",
+    "import/no-default-export": "error",
+
+    // Disallow Reassignment of Function Parameters
+    // https://eslint.org/docs/rules/no-param-reassign
+    // * It is here to override a list of ignorePropertyModificationsFor
+    "no-param-reassign": [
+      "error",
+      {
+        "ignorePropertyModificationsFor": [
+          "draft", // for immer produce draft
+          "acc", // for reduce accumulators
+          "accumulator" // for reduce accumulators
+        ]
+      }
+    ],
+
+    // disallow dangling underscores in identifiers
+    // https://eslint.org/docs/rules/no-underscore-dangle
+    // * Rule is disable because underscores are ok
+    // * From docs: Whether or not you choose to allow dangling underscores in identifiers
+    // * is purely a convention and has no effect on performance, readability, or complexity.
+    // * It's purely a preference
+    "no-underscore-dangle": "off",
+
+    // Enforce consistent usage of destructuring assignment of props, state, and context
+    // https://github.com/yannickcr/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/destructuring-assignment.md
+    // TODO: Add a "Rule is disable because" comment
+    "react/destructuring-assignment": "off",
+
+    // Only .jsx and .tsx files may have JSX
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md
+    // * It is here because airbnb does not include .tsx
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".tsx", ".jsx"]
+      }
+    ],
+
+    // Enforce shorthand or standard form for React fragments
+    // https://github.com/yannickcr/eslint-plugin-react/blob/bc976b837abeab1dffd90ac6168b746a83fc83cc/docs/rules/jsx-fragments.md
+    // * It is here because we think that element syntax is more clear
+    "react/jsx-fragments": ["error", "element"],
+
+    // Prevent missing props validation in a React component definition
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md
+    // * Rule is disable because we use TS to validate prop-types
+    "react/prop-types": "off",
+
+    // Enforce state initialization style
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/state-in-constructor.md
+    // * It is here because we use class properties to define state
+    "react/state-in-constructor": ["error", "never"],
+
+    // Enforces where React component static properties should be positioned
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/static-property-placement.md
+    // * It is here because we use class properties (by babel)
+    "react/static-property-placement": ["error", "static public field"]
+  }
+}

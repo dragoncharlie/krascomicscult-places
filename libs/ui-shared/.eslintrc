@@ -1,0 +1,5 @@
+{
+  "extends": ["../../.eslintrc"],
+  "ignorePatterns": ["!**/*"],
+  rules: { "import/no-default-export": "off" }
+}

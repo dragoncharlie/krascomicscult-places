@@ -1,0 +1,61 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "project": "./tsconfig.base.json"
+  },
+  "ignorePatterns": ["**/*"],
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "jest": true,
+    "node": true
+  },
+  "settings": {
+    "react": { "version": "detect" },
+    "import/internal-regex": "^@zxcvb/",
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "project": ["libs/*/*/tsconfig.json", "apps/*/tsconfig.json"]
+      }
+    }
+  },
+  "plugins": ["@typescript-eslint", "@nrwl/nx", "import", "react"],
+  "extends": [
+    // Order matters
+    // 1. Use strict airbnb config
+    "airbnb",
+    // 2. Disable rules which are already handled by TypeScript
+    "plugin:@typescript-eslint/eslint-recommended",
+    // 3. Apply TypeScript-specific rules
+    "plugin:@typescript-eslint/recommended",
+    // 4. Switch to Extension Rules
+    "./tools/eslint/ext.ts.eslintrc",
+    // 5. Disable prettier conflicting rules
+    "plugin:prettier/recommended",
+    // 6. Disable prettier conflicting rules from react
+    "prettier/react",
+    // 7. Disable prettier conflicting rules from @typescript-eslint
+    "prettier/@typescript-eslint",
+    // 8. Apply workspace rules
+    "./tools/eslint/workspace.eslintrc"
+  ],
+  "rules": {
+    "@nrwl/nx/enforce-module-boundaries": [
+      "error",
+      {
+        "enforceBuildableLibDependency": true,
+        "allow": [],
+        "depConstraints": [
+          { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }
+        ]
+      }
+    ]
+  }
+}
