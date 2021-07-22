@@ -1,4 +1,4 @@
-# Zxcvb
+# kcc
 
 This project was generated using [Nx](https://nx.dev).
 
@@ -18,7 +18,7 @@ Run `yarn nx g @nrwl/react:lib my-lib` to generate a library.
 
 > You can also use any of the plugins above to generate libraries as well.
 
-Libraries are sharable across libraries and applications. They can be imported from `@zxcvb/mylib`.
+Libraries are sharable across libraries and applications. They can be imported from `@kcc/mylib`.
 
 ## Development server
 

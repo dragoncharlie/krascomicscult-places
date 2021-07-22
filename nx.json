@@ -1,5 +1,5 @@
 {
-  "npmScope": "zxcvb",
+  "npmScope": "kcc",
   "affected": {
     "defaultBase": "master"
   },
@@ -28,15 +28,6 @@
     }
   },
   "projects": {
-    "sample-react-app": {
-      "tags": []
-    },
-    "sample-react-app-e2e": {
-      "tags": [],
-      "implicitDependencies": [
-        "sample-react-app"
-      ]
-    },
     "ui-shared": {
       "tags": []
     },
@@ -44,6 +35,15 @@
       "tags": [],
       "implicitDependencies": [
         "ui-shared"
+      ]
+    },
+    "places": {
+      "tags": []
+    },
+    "places-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "places"
       ]
     }
   }

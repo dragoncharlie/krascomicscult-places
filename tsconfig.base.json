@@ -21,13 +21,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@zxcvb/ui-shared": [
+      "@kcc/ui-shared": [
         "libs/ui-shared/src/index.ts"
       ],
-      "@zxcvb/ui-shared/src/lib/ui-buttons": [
+      "@kcc/ui-shared/src/lib/ui-buttons": [
         "libs/ui-shared/src/lib/ui-buttons/src/index.ts"
       ],
-      "@zxcvb/ui-shared/src/lib/ui-select": [
+      "@kcc/ui-shared/src/lib/ui-select": [
         "libs/ui-shared/src/lib/ui-select/src/index.ts"
       ]
     }

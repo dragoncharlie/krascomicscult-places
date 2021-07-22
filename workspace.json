@@ -1,133 +1,6 @@
 {
   "version": 1,
   "projects": {
-    "sample-react-app": {
-      "root": "apps/sample-react-app",
-      "sourceRoot": "apps/sample-react-app/src",
-      "projectType": "application",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@nrwl/web:build",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/apps/sample-react-app",
-            "index": "apps/sample-react-app/src/index.html",
-            "main": "apps/sample-react-app/src/main.tsx",
-            "polyfills": "apps/sample-react-app/src/polyfills.ts",
-            "tsConfig": "apps/sample-react-app/tsconfig.app.json",
-            "assets": [
-              "apps/sample-react-app/src/favicon.ico",
-              "apps/sample-react-app/src/assets"
-            ],
-            "styles": [
-              "apps/sample-react-app/src/styles.css",
-              "apps/sample-react-app/src/tailwind.css"
-            ],
-            "scripts": [],
-            "webpackConfig": "react-tailwind.webpack.config.js"
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/sample-react-app/src/environments/environment.ts",
-                  "with": "apps/sample-react-app/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@nrwl/web:dev-server",
-          "options": {
-            "buildTarget": "sample-react-app:build"
-          },
-          "configurations": {
-            "production": {
-              "buildTarget": "sample-react-app:build:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "apps/sample-react-app/tsconfig.app.json",
-              "apps/sample-react-app/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/sample-react-app/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/sample-react-app/jest.config.js",
-            "tsConfig": "apps/sample-react-app/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        },
-        "build-tailwind-css": {
-          "builder": "@nrwl/workspace:run-commands",
-          "outputs": [],
-          "options": {
-            "command": "npx tailwindcss-cli@latest build ./src/styles.css -o src/app/tailwind.css",
-            "cwd": "apps/sample-react-app"
-          }
-        }
-      }
-    },
-    "sample-react-app-e2e": {
-      "root": "apps/sample-react-app-e2e",
-      "sourceRoot": "apps/sample-react-app-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/sample-react-app-e2e/cypress.json",
-            "tsConfig": "apps/sample-react-app-e2e/tsconfig.e2e.json",
-            "devServerTarget": "sample-react-app:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "sample-react-app:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "apps/sample-react-app-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/sample-react-app-e2e/**/*"
-            ]
-          }
-        }
-      }
-    },
     "ui-shared": {
       "root": "libs/ui-shared",
       "sourceRoot": "libs/ui-shared/src",
@@ -220,6 +93,135 @@
           }
         }
       }
+    },
+    "places": {
+      "root": "apps/places",
+      "sourceRoot": "apps/places/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/places",
+            "index": "apps/places/src/index.html",
+            "main": "apps/places/src/main.tsx",
+            "polyfills": "apps/places/src/polyfills.ts",
+            "tsConfig": "apps/places/tsconfig.app.json",
+            "assets": [
+              "apps/places/src/favicon.ico",
+              "apps/places/src/assets"
+            ],
+            "styles": [
+              "apps/places/src/styles.css",
+              "apps/places/src/tailwind.css"
+            ],
+            "scripts": [],
+            "webpackConfig": "react-tailwind.webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/places/src/environments/environment.ts",
+                  "with": "apps/places/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "places:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "places:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/places/tsconfig.app.json",
+              "apps/places/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/places/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/places/jest.config.js",
+            "tsConfig": "apps/places/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build-tailwind-css": {
+          "builder": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "command": "npx tailwindcss-cli@latest build ./src/styles.css -o src/app/tailwind.css",
+            "cwd": "apps/places"
+          }
+        }
+      }
+    },
+    "places-e2e": {
+      "root": "apps/places-e2e",
+      "sourceRoot": "apps/places-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/places-e2e/cypress.json",
+            "tsConfig": "apps/places-e2e/tsconfig.e2e.json",
+            "devServerTarget": "places:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "places:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/places-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/places-e2e/**/*"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {
@@ -241,5 +243,5 @@
       }
     }
   },
-  "defaultProject": "sample-react-app"
+  "defaultProject": "places"
 }

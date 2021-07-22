@@ -16,7 +16,7 @@
   },
   "settings": {
     "react": { "version": "detect" },
-    "import/internal-regex": "^@zxcvb/",
+    "import/internal-regex": "^@kcc/",
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"]
     },
