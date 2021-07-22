@@ -7,5 +7,25 @@ module.exports = async ({ config, mode }) => {
   // Make whatever fine-grained changes you need
 
   // Return the altered config
-  return config;
+  return {
+    ...config,
+    module: {
+      rules: [
+        ...config.module.rules,
+        {
+          test: /\.css$/,
+          use: [
+            {
+              loader: 'postcss-loader',
+              options: {
+                config: { 
+                  path: './postcss.config.js',
+                },
+              },
+            },
+          ],
+        },
+      ],
+    },
+  };
 };

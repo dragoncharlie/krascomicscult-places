@@ -31,12 +31,6 @@
     "ui-shared": {
       "tags": []
     },
-    "ui-shared-e2e": {
-      "tags": [],
-      "implicitDependencies": [
-        "ui-shared"
-      ]
-    },
     "places": {
       "tags": []
     },
@@ -44,6 +38,12 @@
       "tags": [],
       "implicitDependencies": [
         "places"
+      ]
+    },
+    "ui-shared-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "ui-shared"
       ]
     }
   }
